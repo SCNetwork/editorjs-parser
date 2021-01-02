@@ -1,5 +1,5 @@
 {
-    "name": "editorjs-parser",
+    "name": "@scnetwork/editorjs-parser",
     "version": "1.5.3",
     "description": "This package parses output blocks of editorjs to html",
     "main": "./build/Parser.node.js",

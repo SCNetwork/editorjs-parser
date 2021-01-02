@@ -49,15 +49,15 @@ var edjsParser = function () {
     paragraph: function paragraph(data, config) {
       return "<p class=\"".concat(config.paragraph.pClass, "\"> ").concat(data.text, " </p>");
     },
-    header: function header(data) {
-      return "<h".concat(data.level, ">").concat(data.text, "</h").concat(data.level, ">");
+    header: function header(data, config) {
+      return "<h".concat(data.level, " class=\"").concat(config.header[data.level].hClass, "\">").concat(data.text, "sdf</h").concat(data.level, ">");
     },
-    list: function list(data) {
+    list: function list(data, config) {
       var type = data.style === "ordered" ? "ol" : "ul";
       var items = data.items.reduce(function (acc, item) {
-        return acc + "<li>".concat(item, "</li>");
+        return acc + "<li class=\"".concat(config.list[type].listItemClass, "\">").concat(item, "</li>");
       }, "");
-      return "<".concat(type, ">").concat(items, "</").concat(type, ">");
+      return "<".concat(type, " class=\"").concat(config.list[type].listClass, "\">").concat(items, "</").concat(type, ">");
     },
     quote: function quote(data, config) {
       var alignment = "";
@@ -66,15 +66,15 @@ var edjsParser = function () {
         alignment = "style=\"text-align: ".concat(data.alignment, ";\"");
       }
 
-      return "<blockquote ".concat(alignment, "><p>").concat(data.text, "</p><cite>").concat(data.caption, "</cite></blockquote>");
+      return "<blockquote ".concat(alignment, " class=\"").concat(config.quote.quoteClass, "\"><p>").concat(data.text, "</p><cite>").concat(data.caption, "</cite></blockquote>");
     },
-    table: function table(data) {
+    table: function table(data, config) {
       var rows = data.content.map(function (row) {
-        return "<tr>".concat(row.reduce(function (acc, cell) {
-          return acc + "<td>".concat(cell, "</td>");
+        return "<tr class=\"".concat(config.table.trClass, "\">").concat(row.reduce(function (acc, cell) {
+          return acc + "<td class=\"".concat(config.table.tdClass, "\">").concat(cell, "</td>");
         }, ""), "</tr>");
       });
-      return "<table><tbody>".concat(rows.join(""), "</tbody></table>");
+      return "<table class=\"".concat(config.table.tableClass, "\"><tbody class=\"").concat(config.table.tbodyClass, "\">").concat(rows.join(""), "</tbody></table>");
     },
     image: function image(data, config) {
       var imageConditions = "".concat(data.stretched ? "img-fullwidth" : "", " ").concat(data.withBorder ? "img-border" : "", " ").concat(data.withBackground ? "img-bg" : "");
@@ -144,6 +144,36 @@ var edjsParser = function () {
     paragraph: {
       pClass: "paragraph"
     },
+    header: {
+      1: {
+        hClass: "header1"
+      },
+      2: {
+        hClass: "header2"
+      },
+      3: {
+        hClass: "header3"
+      },
+      4: {
+        hClass: "header4"
+      },
+      5: {
+        hClass: "header5"
+      },
+      6: {
+        hClass: "header6"
+      }
+    },
+    list: {
+      "ol": {
+        listClass: "ol-list",
+        listItemClass: "ol-list-item"
+      },
+      "ul": {
+        listClass: "ol-list",
+        listItemClass: "ol-list-item"
+      }
+    },
     code: {
       codeBlockClass: "code-block"
     },
@@ -153,8 +183,15 @@ var edjsParser = function () {
 
     },
     quote: {
-      applyAlignment: false // if set to true blockquote element will have text-align css property set
-
+      applyAlignment: false,
+      // if set to true blockquote element will have text-align css property set
+      quoteClass: "quote"
+    },
+    table: {
+      trClass: "tr",
+      tableClass: "table",
+      tbodyClass: "tbody",
+      tdClass: "td"
     }
   };
 

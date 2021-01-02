@@ -9,6 +9,36 @@ export default {
     paragraph: {
         pClass: "paragraph",
     },
+    header: {
+        1: {
+            hClass: "header1"
+        },
+        2: {
+            hClass: "header2"
+        },
+        3: {
+            hClass: "header3"
+        },
+        4: {
+            hClass: "header4"
+        },
+        5: {
+            hClass: "header5"
+        },
+        6: {
+            hClass: "header6"
+        }
+    },
+    list: {
+        "ol": {
+            listClass: "ol-list",
+            listItemClass: "ol-list-item"
+        },
+        "ul": {
+            listClass: "ol-list",
+            listItemClass: "ol-list-item"
+        }
+    },
     code: {
         codeBlockClass: "code-block",
     },
@@ -20,5 +50,12 @@ export default {
     quote: {
         applyAlignment: false,
         // if set to true blockquote element will have text-align css property set
+        quoteClass: "quote"
     },
+    table: {
+        trClass: "tr",
+        tableClass: "table",
+        tbodyClass: "tbody",
+        tdClass: "td"
+    }
 };

@@ -2,19 +2,21 @@
 
 editorjs-parser is a NPM package for parsing the output object of [EditorJs](https://github.com/codex-team/editor.js) to HTML.
 
+This is a fork of the [original package](https://github.com/MichaelMikeJones/editorjs-parser) and has the following changes:
+* Support of more classes (so you can set a class for every element - useful for frameworks live tailwindcss)
+
 # Installation
 
 ### CDN
 
-- https://cdn.jsdelivr.net/npm/editorjs-parser@1/build/Parser.node.min.js (Node only)
-- https://cdn.jsdelivr.net/npm/editorjs-parser@1/build/Parser.browser.min.js (Browser only)
+Only supported by the [original package](https://github.com/MichaelMikeJones/editorjs-parser).
 
 ### NPM
 
 Use the package manager [npm](https://www.npmjs.com/) to install editorjs-parser.
 
 ```bash
-npm install --save editorjs-parser
+npm install --save @SCNetwork/editorjs-parser
 ```
 
 # Usage
@@ -103,32 +105,65 @@ This is the default configuration. You can override any of these properties by p
 
 ```javascript
 {
-  image: {
-    use: "figure",
-    // use figure or img tag for images (figcaption will be used for caption of figure)
-    // if you use figure, caption will be visible
-    imgClass: "img", // used class for img tags
-    figureClass: "fig-img", // used class for figure tags
-    figCapClass: "fig-cap", // used class for figcaption tags
-    path: "absolute",
-    // if absolute is passed, the url property which is the absolute path to the image will be used
-    // otherwise pass a relative path with the filename property in <> like so: '/img/<fileName>'
-  },
-  paragraph: {
-    pClass: "paragraph", // used class for paragraph tags
-  },
-  code: {
-    codeBlockClass: "code-block", // used class for code blocks
-  },
-  embed: {
-    useProvidedLength: false,
-    // set to true if you want the returned width and height of editorjs to be applied
-    // NOTE: sometimes source site overrides the lengths so it does not work 100%
-  },
-  quote: {
-    applyAlignment: false,
-    // if set to true blockquote element will have text-align css property set
-  },
+    image: {
+        use: "figure", // figure or img (figcaption will be used for caption of figure)
+            imgClass: "img",
+            figureClass: "fig-img",
+            figCapClass: "fig-cap",
+            path: "absolute",
+    },
+    paragraph: {
+        pClass: "paragraph",
+    },
+    header: {
+        1: {
+            hClass: "header1"
+        },
+        2: {
+            hClass: "header2"
+        },
+        3: {
+            hClass: "header3"
+        },
+        4: {
+            hClass: "header4"
+        },
+        5: {
+            hClass: "header5"
+        },
+        6: {
+            hClass: "header6"
+        }
+    },
+    list: {
+        "ol": {
+            listClass: "ol-list",
+                listItemClass: "ol-list-item"
+        },
+        "ul": {
+            listClass: "ol-list",
+                listItemClass: "ol-list-item"
+        }
+    },
+    code: {
+        codeBlockClass: "code-block",
+    },
+    embed: {
+        useProvidedLength: false,
+        // set to true if you want the returned width and height of editorjs to be applied
+        // NOTE: sometimes source site overrides the lengths so it does not work 100%
+    },
+    quote: {
+        applyAlignment: false,
+            // if set to true blockquote element will have text-align css property set
+            quoteClass: "quote"
+    },
+    table: {
+        trClass: "tr",
+            tableClass: "table",
+            tbodyClass: "tbody",
+            tdClass: "td"
+    }
 };
 ```
 
