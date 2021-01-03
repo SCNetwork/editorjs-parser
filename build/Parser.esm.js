@@ -106,8 +106,8 @@ var defaultParsers = {
   raw: function raw(data) {
     return data.html;
   },
-  delimiter: function delimiter(data) {
-    return "<br />";
+  delimiter: function delimiter(data, config) {
+    return "<".concat(config.delimiter.element, " class=\"").concat(config.delimiter["class"], "\">").concat(config.delimiter.element !== 'hr' && config.delimiter.element !== 'br' ? "".concat(config.delimiter.content ? config.delimiter.content : '', "</").concat(config.delimiter.element, ">") : '');
   },
   warning: function warning(data, config) {
     return "<div class=\"".concat(config.warning.containerClass, "\"><strong class=\"").concat(config.warning.titleClass, "\">").concat(data.title, "</strong><p class=\"").concat(config.warning.messageClass, "\">").concat(data.message, "</p></div>");
@@ -193,6 +193,11 @@ var defaultConfig = {
     containerClass: "warning",
     titleClass: "warningTitle",
     messageClass: "messageClass"
+  },
+  delimiter: {
+    element: 'br',
+    "class": 'delimiter',
+    content: null
   },
   table: {
     trClass: "tr",

@@ -72,8 +72,8 @@ export default {
     raw: function (data) {
         return data.html;
     },
-    delimiter: function (data) {
-        return "<br />";
+    delimiter: function (data, config) {
+        return `<${config.delimiter.element} class="${config.delimiter.class}">${config.delimiter.element !== 'hr' && config.delimiter.element !== 'br' ? `${config.delimiter.content ? config.delimiter.content : ''}</${config.delimiter.element}>` : ''}`;
     },
 
     warning: function (data, config) {

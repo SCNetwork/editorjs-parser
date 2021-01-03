@@ -59,6 +59,11 @@ export default {
         titleClass: "warningTitle",
         messageClass: "messageClass"
     },
+    delimiter: {
+        element: 'br',
+        class: 'delimiter',
+        content: null
+    },
     table: {
         trClass: "tr",
         tableClass: "table",

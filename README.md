@@ -136,6 +136,16 @@ This is the default configuration. You can override any of these properties by p
             hClass: "header6"
         }
     },
+    warning: {
+        containerClass: "warning",
+        titleClass: "warningTitle",
+        messageClass: "messageClass"
+    },
+    delimiter: {
+        element: 'br', // Element of the delimeter, supports every element (eg. br, hr, p, h1)
+        class: 'delimiter',
+        content: null  // Only availble if the selected element can contain a value  
+    },
     list: {
         "ol": {
             listClass: "ol-list",
