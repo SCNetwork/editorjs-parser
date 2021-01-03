@@ -3,7 +3,9 @@
 editorjs-parser is a NPM package for parsing the output object of [EditorJs](https://github.com/codex-team/editor.js) to HTML.
 
 This is a fork of the [original package](https://github.com/MichaelMikeJones/editorjs-parser) and has the following changes:
-* Support of more classes (so you can set a class for every element - useful for frameworks live tailwindcss)
+* Support for more classes for blocks (so you can set a class for every element - useful for frameworks live tailwindcss)
+* Support for more blocks (eg. checklist)
+
 
 # Installation
 
@@ -65,6 +67,7 @@ const markup = parser.parseBlock(block);
 - Embed
 - Image
 - Simple-image
+- Checklist  
 - Warning (you may need to style that yourself)
 
   **NOTE:** It is pointless to use both `image` and `simple-image` block types in the same editor instance, but this parser supports both of them, and you can use any of them that fulfills your needs.
@@ -108,10 +111,10 @@ This is the default configuration. You can override any of these properties by p
 {
     image: {
         use: "figure", // figure or img (figcaption will be used for caption of figure)
-            imgClass: "img",
-            figureClass: "fig-img",
-            figCapClass: "fig-cap",
-            path: "absolute",
+        imgClass: "img",
+        figureClass: "fig-img",
+        figCapClass: "fig-cap",
+        path: "absolute",
     },
     paragraph: {
         pClass: "paragraph",
@@ -141,6 +144,12 @@ This is the default configuration. You can override any of these properties by p
         titleClass: "warningTitle",
         messageClass: "messageClass"
     },
+    checklist: {
+        itemClass: "checklistItem",
+        checkBoxClass: "checkBox",
+        contentClass: "checklistContent",
+        containerClass: "CheckboxContainer"
+    },
     delimiter: {
         element: 'br', // Element of the delimeter, supports every element (eg. br, hr, p, h1)
         class: 'delimiter',
@@ -149,11 +158,11 @@ This is the default configuration. You can override any of these properties by p
     list: {
         "ol": {
             listClass: "ol-list",
-                listItemClass: "ol-list-item"
+             listItemClass: "ol-list-item"
         },
         "ul": {
             listClass: "ol-list",
-                listItemClass: "ol-list-item"
+            listItemClass: "ol-list-item"
         }
     },
     code: {

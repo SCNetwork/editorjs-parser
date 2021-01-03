@@ -53,14 +53,14 @@ var edjsParser = function () {
       return "<h".concat(data.level, " class=\"").concat(config.header[data.level].hClass, "\">").concat(data.text, "sdf</h").concat(data.level, ">");
     },
     list: function list(data, config) {
-      var type = data.style === "ordered" ? "ol" : "ul";
+      var type = data.style === 'ordered' ? 'ol' : 'ul';
       var items = data.items.reduce(function (acc, item) {
         return acc + "<li class=\"".concat(config.list[type].listItemClass, "\">").concat(item, "</li>");
-      }, "");
+      }, '');
       return "<".concat(type, " class=\"").concat(config.list[type].listClass, "\">").concat(items, "</").concat(type, ">");
     },
     quote: function quote(data, config) {
-      var alignment = "";
+      var alignment = '';
 
       if (config.quote.applyAlignment) {
         alignment = "style=\"text-align: ".concat(data.alignment, ";\"");
@@ -72,13 +72,13 @@ var edjsParser = function () {
       var rows = data.content.map(function (row) {
         return "<tr class=\"".concat(config.table.trClass, "\">").concat(row.reduce(function (acc, cell) {
           return acc + "<td class=\"".concat(config.table.tdClass, "\">").concat(cell, "</td>");
-        }, ""), "</tr>");
+        }, ''), "</tr>");
       });
-      return "<table class=\"".concat(config.table.tableClass, "\"><tbody class=\"").concat(config.table.tbodyClass, "\">").concat(rows.join(""), "</tbody></table>");
+      return "<table class=\"".concat(config.table.tableClass, "\"><tbody class=\"").concat(config.table.tbodyClass, "\">").concat(rows.join(''), "</tbody></table>");
     },
     image: function image(data, config) {
-      var imageConditions = "".concat(data.stretched ? "img-fullwidth" : "", " ").concat(data.withBorder ? "img-border" : "", " ").concat(data.withBackground ? "img-bg" : "");
-      var imgClass = config.image.imgClass || "";
+      var imageConditions = "".concat(data.stretched ? 'img-fullwidth' : '', " ").concat(data.withBorder ? 'img-border' : '', " ").concat(data.withBackground ? 'img-bg' : '');
+      var imgClass = config.image.imgClass || '';
       var imageSrc;
 
       if (data.url) {
@@ -86,7 +86,7 @@ var edjsParser = function () {
         // therefore, we use the absolute path provided in data.url
         // so, config.image.path property is useless in this case!
         imageSrc = data.url;
-      } else if (config.image.path === "absolute") {
+      } else if (config.image.path === 'absolute') {
         imageSrc = data.file.url;
       } else {
         imageSrc = config.image.path.replace(/<(.+)>/, function (match, p1) {
@@ -94,11 +94,11 @@ var edjsParser = function () {
         });
       }
 
-      if (config.image.use === "img") {
+      if (config.image.use === 'img') {
         return "<img class=\"".concat(imageConditions, " ").concat(imgClass, "\" src=\"").concat(imageSrc, "\" alt=\"").concat(data.caption, "\">");
-      } else if (config.image.use === "figure") {
-        var figureClass = config.image.figureClass || "";
-        var figCapClass = config.image.figCapClass || "";
+      } else if (config.image.use === 'figure') {
+        var figureClass = config.image.figureClass || '';
+        var figCapClass = config.image.figCapClass || '';
         return "<figure class=\"".concat(figureClass, "\"><img class=\"").concat(imgClass, " ").concat(imageConditions, "\" src=\"").concat(imageSrc, "\" alt=\"").concat(data.caption, "\"><figcaption class=\"").concat(figCapClass, "\">").concat(data.caption, "</figcaption></figure>");
       }
     },
@@ -108,6 +108,13 @@ var edjsParser = function () {
     },
     raw: function raw(data) {
       return data.html;
+    },
+    checklist: function checklist(data, config) {
+      var items;
+      data.items.forEach(function (item) {
+        items = items + "<div class=\"".concat(config.checklist.itemClass, "\"><input type=\"checkbox\" class=\"").concat(config.checklist.checkBoxClass, "\"").concat(item.checked ? ' checked' : '', "> <span class=\"").concat(config.checklist.contentClass, "\">").concat(item.text, "</span></div>");
+      });
+      return "<div class=\"".concat(config.checklist.containerClass, "\">").concat(items, "</div>");
     },
     delimiter: function delimiter(data, config) {
       return "<".concat(config.delimiter.element, " class=\"").concat(config.delimiter["class"], "\">").concat(config.delimiter.element !== 'hr' && config.delimiter.element !== 'br' ? "".concat(config.delimiter.content ? config.delimiter.content : '', "</").concat(config.delimiter.element, ">") : '');
@@ -119,17 +126,17 @@ var edjsParser = function () {
       if (config.embed.useProvidedLength) {
         data.length = "width=\"".concat(data.width, "\" height=\"").concat(data.height, "\"");
       } else {
-        data.length = "";
+        data.length = '';
       }
 
-      var regex = new RegExp(/<%data\.(.+?)%>/, "gm");
+      var regex = new RegExp(/<%data\.(.+?)%>/, 'gm');
 
       if (config.embedMarkups[data.service]) {
         return config.embedMarkups[data.service].replace(regex, function (match, p1) {
           return data[p1];
         });
       } else {
-        return config.embedMarkups["defaultMarkup"].replace(regex, function (match, p1) {
+        return config.embedMarkups['defaultMarkup'].replace(regex, function (match, p1) {
           return data[p1];
         });
       }
@@ -196,6 +203,12 @@ var edjsParser = function () {
       containerClass: "warning",
       titleClass: "warningTitle",
       messageClass: "messageClass"
+    },
+    checklist: {
+      itemClass: "checklistItem",
+      checkBoxClass: "checkBox",
+      contentClass: "checklistContent",
+      containerClass: "CheckboxContainer"
     },
     delimiter: {
       element: 'br',

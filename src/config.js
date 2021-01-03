@@ -59,6 +59,12 @@ export default {
         titleClass: "warningTitle",
         messageClass: "messageClass"
     },
+    checklist: {
+        itemClass: "checklistItem",
+        checkBoxClass: "checkBox",
+        contentClass: "checklistContent",
+        containerClass: "CheckboxContainer"
+    },
     delimiter: {
         element: 'br',
         class: 'delimiter',
