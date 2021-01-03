@@ -50,7 +50,7 @@ var edjsParser = function () {
       return "<p class=\"".concat(config.paragraph.pClass, "\"> ").concat(data.text, " </p>");
     },
     header: function header(data, config) {
-      return "<h".concat(data.level, " class=\"").concat(config.header[data.level].hClass, "\">").concat(data.text, "sdf</h").concat(data.level, ">");
+      return "<h".concat(data.level, " class=\"").concat(config.header[data.level].hClass, "\">").concat(data.text, "</h").concat(data.level, ">");
     },
     list: function list(data, config) {
       var type = data.style === 'ordered' ? 'ol' : 'ul';

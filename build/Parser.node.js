@@ -49,7 +49,7 @@ var defaultParsers = {
     },
 
     header: function (data, config) {
-        return `<h${data.level} class="${config.header[data.level].hClass}">${data.text}sdf</h${data.level}>`;
+        return `<h${data.level} class="${config.header[data.level].hClass}">${data.text}</h${data.level}>`;
     },
 
     list: function (data, config) {
