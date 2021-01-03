@@ -66,7 +66,7 @@ var defaultParsers = {
         if (config.quote.applyAlignment) {
             alignment = `style="text-align: ${data.alignment};"`;
         }
-        return `<blockquote ${alignment} class="${config.quote.quoteClass}"><p>${data.text}</p><cite>${data.caption}</cite></blockquote>`;
+        return `<blockquote ${alignment} class="${config.quote.quoteClass}"><p class="${config.quote.pClass}">${data.text}</p><cite class="${config.quote.citeClass}>${data.caption}</cite></blockquote>`;
     },
 
     table: function(data, config) {
@@ -192,7 +192,9 @@ var defaultConfig = {
     quote: {
         applyAlignment: false,
         // if set to true blockquote element will have text-align css property set
-        quoteClass: "quote"
+        quoteClass: "quote",
+        pClass: "pQuote",
+        citeClass: "cite"
     },
     table: {
         trClass: "tr",

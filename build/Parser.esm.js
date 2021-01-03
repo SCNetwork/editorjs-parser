@@ -63,7 +63,7 @@ var defaultParsers = {
       alignment = "style=\"text-align: ".concat(data.alignment, ";\"");
     }
 
-    return "<blockquote ".concat(alignment, " class=\"").concat(config.quote.quoteClass, "\"><p>").concat(data.text, "</p><cite>").concat(data.caption, "</cite></blockquote>");
+    return "<blockquote ".concat(alignment, " class=\"").concat(config.quote.quoteClass, "\"><p class=\"").concat(config.quote.pClass, "\">").concat(data.text, "</p><cite class=\"").concat(config.quote.citeClass, ">").concat(data.caption, "</cite></blockquote>");
   },
   table: function table(data, config) {
     var rows = data.content.map(function (row) {
@@ -182,7 +182,9 @@ var defaultConfig = {
   quote: {
     applyAlignment: false,
     // if set to true blockquote element will have text-align css property set
-    quoteClass: "quote"
+    quoteClass: "quote",
+    pClass: "pQuote",
+    citeClass: "cite"
   },
   table: {
     trClass: "tr",
