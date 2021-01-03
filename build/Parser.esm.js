@@ -63,7 +63,7 @@ var defaultParsers = {
       alignment = "style=\"text-align: ".concat(data.alignment, ";\"");
     }
 
-    return "<blockquote ".concat(alignment, " class=\"").concat(config.quote.quoteClass, "\"><p class=\"").concat(config.quote.pClass, "\">").concat(data.text, "</p><cite class=\"").concat(config.quote.citeClass, ">").concat(data.caption, "</cite></blockquote>");
+    return "<blockquote ".concat(alignment, " class=\"").concat(config.quote.quoteClass, "\"><p class=\"").concat(config.quote.pClass, "\">").concat(data.text, "</p><cite class=\"").concat(config.quote.citeClass, "\">").concat(data.caption, "</cite></blockquote>");
   },
   table: function table(data, config) {
     var rows = data.content.map(function (row) {

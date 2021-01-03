@@ -23,7 +23,7 @@ export default {
         if (config.quote.applyAlignment) {
             alignment = `style="text-align: ${data.alignment};"`;
         }
-        return `<blockquote ${alignment} class="${config.quote.quoteClass}"><p class="${config.quote.pClass}">${data.text}</p><cite class="${config.quote.citeClass}>${data.caption}</cite></blockquote>`;
+        return `<blockquote ${alignment} class="${config.quote.quoteClass}"><p class="${config.quote.pClass}">${data.text}</p><cite class="${config.quote.citeClass}">${data.caption}</cite></blockquote>`;
     },
 
     table: function(data, config) {

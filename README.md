@@ -156,7 +156,7 @@ This is the default configuration. You can override any of these properties by p
     quote: {
         applyAlignment: false,
             // if set to true blockquote element will have text-align css property set
-        quoteClass: "quote"
+        quoteClass: "quote",
         pClass: "pQuote",
         citeClass: "cite"
     },
