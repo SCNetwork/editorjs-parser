@@ -76,6 +76,10 @@ export default {
         return "<br />";
     },
 
+    warning: function (data, config) {
+        return `<div class="${config.warning.containerClass}"><strong class="${config.warning.titleClass}">${data.title}</strong><p class="${config.warning.messageClass}">${data.message}</p></div>`;
+    },
+
     embed: function (data, config) {
         if (config.embed.useProvidedLength) {
             data.length = `width="${data.width}" height="${data.height}"`;

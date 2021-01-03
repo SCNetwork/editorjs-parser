@@ -166,7 +166,15 @@
             "data": {
                 "html": "<blockquote class=\"imgur-embed-pub\" lang=\"en\" data-id=\"a/Vd1xADQ\"  ><a href=\"//imgur.com/a/Vd1xADQ\">Dark arts and crafts!</a></blockquote><script async src=\"//s.imgur.com/min/embed.js\" charset=\"utf-8\"></script>"
             }
+        },
+        {
+            "type": "warning",
+            "data": {
+                "title": "Buy coffee!",
+                "message": "There is not enough coffee at home!"
+            }
         }
+
     ],
     "version": "2.18.0"
 }

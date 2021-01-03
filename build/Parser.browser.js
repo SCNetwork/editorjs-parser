@@ -112,6 +112,9 @@ var edjsParser = function () {
     delimiter: function delimiter(data) {
       return "<br />";
     },
+    warning: function warning(data, config) {
+      return "<div class=\"".concat(config.warning.containerClass, "\"><strong class=\"").concat(config.warning.titleClass, "\">").concat(data.title, "</strong><p class=\"").concat(config.warning.messageClass, "\">").concat(data.message, "</p></div>");
+    },
     embed: function embed(data, config) {
       if (config.embed.useProvidedLength) {
         data.length = "width=\"".concat(data.width, "\" height=\"").concat(data.height, "\"");
@@ -188,6 +191,11 @@ var edjsParser = function () {
       quoteClass: "quote",
       pClass: "pQuote",
       citeClass: "cite"
+    },
+    warning: {
+      containerClass: "warning",
+      titleClass: "warningTitle",
+      messageClass: "messageClass"
     },
     table: {
       trClass: "tr",

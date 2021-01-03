@@ -54,6 +54,11 @@ export default {
         pClass: "pQuote",
         citeClass: "cite"
     },
+    warning: {
+        containerClass: "warning",
+        titleClass: "warningTitle",
+        messageClass: "messageClass"
+    },
     table: {
         trClass: "tr",
         tableClass: "table",

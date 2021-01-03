@@ -21,7 +21,7 @@ npm install --save @SCNetwork/editorjs-parser
 
 # Usage
 
-To use the package in browser, import Browser verison through CDN to your HTML file and just call `edjsParser` class:
+To use the package in a browser, import Browser version through CDN to your HTML file and just call `edjsParser` class:
 
 ```javascript
 const parser = new edjsParser(config, customParsers, embedMarkup);
@@ -48,7 +48,7 @@ To parse one block, pass a complete block:
 const markup = parser.parseBlock(block);
 ```
 
-**NOTE:** HTML markup in code blocks are already sanitized and ready to be send to browser. You don't have to do anything.
+**NOTE:** HTML markup in code blocks are already sanitized and ready to be sent to browser. You don't have to do anything.
 
 **NOTE:** Code blocks are compatible with [highlight.js](https://github.com/highlightjs/highlight.js/)
 
@@ -65,8 +65,9 @@ const markup = parser.parseBlock(block);
 - Embed
 - Image
 - Simple-image
+- Warning (you may need to style that yourself)
 
-**NOTE:** It is pointless to use both `image` and `simple-image` block types in the same editor insatnce, but this parser supports both of them and you can use any of them that fulfills your needs.
+  **NOTE:** It is pointless to use both `image` and `simple-image` block types in the same editor instance, but this parser supports both of them, and you can use any of them that fulfills your needs.
 
 ## Custom or overriding parser methods
 
@@ -187,7 +188,7 @@ const parser = new edjsParser(config);
 
 **NOTE:** Images will have class `img`.
 
-**NOTE:** If the image is streched, the parsed `img` tag will have `img-fullwidth` as class.
+**NOTE:** If the image is stretched, the parsed `img` tag will have `img-fullwidth` as class.
 
 **NOTE:** If image is set to have a border, the parsed `img` tag will have `img-border` as class.
 
@@ -197,7 +198,7 @@ You can style, according to these classes.
 
 ### Apply provided lengths (embeds)
 
-If you want the returned width and height of embeded element to be applied, set `useProvidedLength` option to true in config:
+If you want the returned width and height of embedded element to be applied, set `useProvidedLength` option to true in the config:
 
 ```javascript
 const config = {
@@ -233,9 +234,9 @@ const parser = new edjsParser(undifined, undifined, customEmbeds);
 
 `<%data.length%>` returns string like this: `width="300" height="500"`
 
-### Qoute Alignment (quotes)
+### Quote Alignment (quotes)
 
-If you need the returned alignment of blockquotes to be set, set `applyAlignment` to true in config:
+If you need the returned alignment of blockquotes to be set, set `applyAlignment` to true in the config:
 
 ```javascript
 const config = {
